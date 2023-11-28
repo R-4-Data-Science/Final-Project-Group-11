@@ -1,5 +1,4 @@
 #' @title Finding the Betas
-#'
 #' @description This function will spit out the desired \code{beta} values for the
 #' log loss function
 #' @param Beta A \code{vector} containing the desired starting coeffs for estimation
@@ -11,12 +10,15 @@
 #' @export
 #' @examples
 #'
-log_betas <- function(betas, Data){
-  start_betas <- solve(t(betas)%*%betas)%*%t(betas)%*%Data
-  optim(start_betas, f = log_loss, obs = Data)
+log_betas <- function(Data, Y, X){
+
+  start_betas <- solve(t(Data[,X])%*%Data[,X])%*%t(Data[,X])%*%Data[,Y]
+  optim(start_betas, log_loss, Obs = Data, Resp=Y, Preds=X)
+
 }
 
-test_betas <- matrix(rnorm(100), nrow = 10, ncol = 10)
-test_data <- rnorm(11)
+test_data <- matrix(NA, nrow = 10, ncol = 10)
+test_data[,1] <- sample(c(0,1), size = 10, replace = T)
+test_data[,2:10] <- rnorm(90)
 
-log_betas(betas = test_betas, Data = test_data )
+log_betas(test_data, Y = 1, X = 2:10)

@@ -9,16 +9,15 @@
 #' @importFrom stats
 #' @export
 #' @examples
-#'
+#'   test_data <- matrix(NA, nrow = 10, ncol = 10)
+#'   test_data[,1] <- sample(c(0,1), size = 10, replace = T)
+#'   test_data[,2:10] <- rnorm(90)
+#'   log_betas(Data = test_data, Y = 1, X = 2:10)
 log_betas <- function(Data, Y, X){
 
   start_betas <- solve(t(Data[,X])%*%Data[,X])%*%t(Data[,X])%*%Data[,Y]
+
   optim(start_betas, log_loss, Obs = Data, Resp=Y, Preds=X)
 
 }
 
-test_data <- matrix(NA, nrow = 10, ncol = 10)
-test_data[,1] <- sample(c(0,1), size = 10, replace = T)
-test_data[,2:10] <- rnorm(90)
-
-log_betas(test_data, Y = 1, X = 2:10)

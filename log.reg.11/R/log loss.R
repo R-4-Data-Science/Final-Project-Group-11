@@ -11,20 +11,15 @@
 #' @importFrom stats
 #' @export
 #' @examples
-#' test_data <- matrix(NA, nrow = 10, ncol = 10)
-#'test_data[,1] <- sample(c(0,1), size = 10, replace = T)
-#'test_data[,2:10] <- rnorm(90)
-#'log_loss(Obs = test_data , Resp = 1, Preds = 2:10)
+#'   test_data <- matrix(NA, nrow = 10, ncol = 10)
+#'   test_data[,1] <- sample(c(0,1), size = 10, replace = T)
+#'   test_data[,2:10] <- rnorm(90)
+#'   log_loss(Beta , Obs = test_data , Resp = 1, Preds = 2:10)
 log_loss <- function(Beta, Obs, Resp, Preds){
-
   p <- rep(NA, nrow(Obs))
   for(i in 1:nrow(Obs)){
-
   p[i] <- 1/(1+exp(-t(Obs[i,Preds])%*%Beta))
-
   }
-
   (t(log(p))%*%(-Obs[,Resp]) - t(log(1-p))%*%(1-Obs[,Resp]))
-
 }
 

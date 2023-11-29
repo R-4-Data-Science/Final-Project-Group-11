@@ -1,14 +1,13 @@
 #' @title Bootstrap Logistic Regression Confidence Intervals
 #' @description Computes bootstrap confidence intervals for coefficients estimated by the logistic regression model.
 #' @param obs A \code{matrix} containing the full data set with predictors and response.
-#' @param resp A \code{vector} representing the response variable column in obs.
-#' @param pred A \code{matrix} representing the predictor variables.
+#' @param resp A \code{integer} representing the response variable column.
+#' @param pred A \code{vector} representing the predictor variables.
 #' @param alpha A \code{numeric} representing the significance level for the confidence intervals (default is 0.05).
 #' @param B A \code{integer} representing the number of bootstrap samples to generate (default is 20).
 #' @return A \code{matrix} with coefficients and their corresponding lower and upper confidence intervals
 #' @author Ernest Asante
 #' @import stats
-#' @import MASS
 #' @export
 #' @examples
 #'   #data obtained from https://stats.oarc.ucla.edu/r/dae/logit-regression/

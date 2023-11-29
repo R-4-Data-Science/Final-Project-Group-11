@@ -11,9 +11,10 @@
 #' @importFrom stats
 #' @export
 log_loss <- function(Beta, Obs, Resp, Preds){
+  Obs <- cbind(as.matrix(Obs[,Resp]),rep(1, nrow(Obs)), as.matrix(Obs[,Preds]))
   p <- rep(NA, nrow(Obs))
   for(i in 1:nrow(Obs)){
-  p[i] <- 1/(1+exp(-t(Obs[i,Preds])%*%Beta))
+    p[i] <- 1/(1+exp(-t(Obs[i,c(2,Preds)])%*%Beta))
   }
   (t(log(p))%*%(-Obs[,Resp]) - t(log(1-p))%*%(1-Obs[,Resp]))
 }

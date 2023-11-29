@@ -1,20 +1,21 @@
 #' @title Bootstrap Logistic Regression Confidence Intervals
 #' @description Computes bootstrap confidence intervals for coefficients estimated by the logistic regression model.
-#' @param obs A matrix containing the full dataset with predictors and response.
-#' @param resp A vector representing the response variable column in obs.
-#' @param pred A matrix representing the predictor variables.
-#' @param alpha The significance level for the confidence intervals (default is 0.05).
-#' @param B The number of bootstrap samples to generate (default is 20).
-#' @return A matrix with coefficients and their corresponding lower and upper confidence intervals.
-#'
+#' @param obs A \code{matrix} containing the full data set with predictors and response.
+#' @param resp A \code{vector} representing the response variable column in obs.
+#' @param pred A \code{matrix} representing the predictor variables.
+#' @param alpha A \code{numeric} representing the significance level for the confidence intervals (default is 0.05).
+#' @param B A \code{integer} representing the number of bootstrap samples to generate (default is 20).
+#' @return A \code{matrix} with coefficients and their corresponding lower and upper confidence intervals
 #' @author Ernest Asante
-#' @import stats qnorm
+#' @import stats
+#' @import MASS
 #' @export
 #' @examples
-#'   test_data <- matrix(rnorm(100), nrow = 10, ncol = 10)
-#'   test_resp <- sample(c(0,1), size = 10, replace = TRUE)
-#'   test_pred <- test_data[, 2:10]
-#'   results <- bootstrap_logistic_confidence(test_data, test_resp, test_pred)
+#'   #data obtained from https://stats.oarc.ucla.edu/r/dae/logit-regression/
+#'   test_data <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
+#'   test_resp <- 1
+#'   test_pred <- 2:4
+#'   results <- suppressWarnings(bootstrap_logistic_confidence(test_data, test_resp, test_pred))
 #'   print(results)
 bootstrap_logistic_confidence <- function(obs, resp, pred, alpha = 0.05, B = 20) {
   original_fit <- log_betas(Data = obs, Y = resp, X = pred)

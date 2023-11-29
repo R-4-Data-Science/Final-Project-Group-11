@@ -6,16 +6,18 @@
 #' @param
 #' @return A \code{vector} giving the optimized beta values
 #' @author Charles Benfer
-#' @importFrom stats
+#' @import stats
+#' @import MASS
 #' @export
 #' @examples
-#'   test_data <- matrix(NA, nrow = 10, ncol = 10)
-#'   test_data[,1] <- sample(c(0,1), size = 10, replace = T)
-#'   test_data[,2:10] <- rnorm(90)
-#'   log_betas(Data = test_data, Y = 1, X = 2:10)
+#'   #data obtained from https://stats.oarc.ucla.edu/r/dae/logit-regression/
+#'   test_data <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
+#'   test_resp <- 1
+#'   test_pred <- 2:4
+#'   log_betas(Data = test_data, Y = 1, X = 2:4)
 log_betas <- function(Data, Y, X){
 
-  start_betas <- solve(t(Data[,X])%*%Data[,X])%*%t(Data[,X])%*%Data[,Y]
+  start_betas <- solve(t(as.matrix(Data[,X]))%*%as.matrix(Data[,X]))%*%t(as.matrix(Data[,X]))%*%as.matrix(Data[,Y])
 
   optim(start_betas, log_loss, Obs = Data, Resp=Y, Preds=X)
 

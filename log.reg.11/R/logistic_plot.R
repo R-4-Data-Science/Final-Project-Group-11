@@ -13,5 +13,11 @@
 #'   logistic_plot(test_data, Resp = 1, Pred= 3)
 logistic_plot <- function(Data, Pred, Resp){
 
+  coeffs <- log_betas(Data = Data, Y = Resp, X = Pred)$par
+  curve <- function(x){(exp(coeffs[1] + coeffs[2]*x))/(1 + exp(coeffs[1] + coeffs[2]*x))}
+  plot(Data[,Resp]~Data[,Pred], ylab = 'Response', xlab = colnames(Data)[Pred])
+  plot(curve, add = T)
 
 }
+
+coeffs[1]

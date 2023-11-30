@@ -6,8 +6,9 @@
 #' @param alpha A \code{numeric} representing the significance level for the confidence intervals (default is 0.05).
 #' @param B A \code{integer} representing the number of bootstrap samples to generate (default is 20).
 #' @return A \code{matrix} with coefficients and their corresponding lower and upper confidence intervals
-#' @author Ernest Asante
+#' @author Group 11
 #' @import stats
+#' @import MASS
 #' @export
 #' @examples
 #'   #data obtained from https://stats.oarc.ucla.edu/r/dae/logit-regression/

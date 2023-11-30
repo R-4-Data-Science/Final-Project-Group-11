@@ -6,7 +6,7 @@
 #' @param cut_off : A number of the value for prediction, default is 0.5. (i.e. assign value 1 for predictions above 0.5 and value 0 for prediction below or equal to 0.5)
 #' @return A list of the following attributes: `confusion_matrix`, `prevalence`, `accuracy`, `sensitivity`, `specificity`, `false_discovery_rate`, `diagnostic_odds_ratio`
 #' @author Group 11
-#' @importFrom
+#' @import MASS
 #' @export
 #' @examples
 #' #data obtained from https://stats.oarc.ucla.edu/r/dae/logit-regression/

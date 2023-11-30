@@ -5,8 +5,9 @@
 #' @param Resp A \code{integer} representing the response variable column.
 #' @param pred A \code{integer} representing the predictor variable column.
 #' @return A plot showing the logistic regression line.
-#' @author Ernest Asante
+#' @author Group 11
 #' @import stats
+#' @import MASS
 #' @export
 #' @examples
 #'   test_data <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
@@ -19,5 +20,3 @@ logistic_plot <- function(Data, Pred, Resp){
   plot(curve, add = T)
 
 }
-
-coeffs[1]

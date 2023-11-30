@@ -6,9 +6,11 @@
 #' @param Resp An \code{integer} that tells which column of the observation matrix you
 #' want to be the response variable.
 #' @param Preds A \code{vector} of integers corresponding to the columns for the desired predictor variables
+#' @param Beta A \code{vector} of numerics representing the beta values for the intercept and predictors for a logistic regression
 #' @return A \code{numeric} giving value of loss at \code{beta}
-#' @author Charles Benfer
-#' @importFrom stats
+#' @author Group 11
+#' @import stats
+#' @import MASS
 #' @export
 log_loss <- function(Beta, Obs, Resp, Preds){
   Obs <- cbind(as.matrix(Obs[,Resp]),rep(1, nrow(Obs)), as.matrix(Obs[,Preds]))

@@ -6,7 +6,8 @@
 #' @param value_name : A character, representing the user's choice of which value in the matrix user wants to plot. It needs to be one of six `prevalence`, `accuracy`, `sensitivity`, `specificity`, `false_discovery_rate`, `diagnostic_odds_ratio` , the default is "prevalence"
 #' @return A plot of the value chosen from user versus cut_off_value(from0.1 to 0.9 with step of 0.1)
 #' @author Group 11
-#' @importFrom
+#' @import stats
+#' @import MASS
 #' @export
 #' @examples
 #' #data obtained from https://stats.oarc.ucla.edu/r/dae/logit-regression/

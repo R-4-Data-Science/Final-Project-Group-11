@@ -1,11 +1,11 @@
 #' @title Finding the Betas
 #' @description This function will spit out the desired \code{beta} values for the
 #' log loss function
-#' @param Data A \code{matrix} containing the data we want to find the optimal coefficem
-#' @param f A \code{function} that we are optimizing. Default is \code{log_loss} from the same package
-#' @param
-#' @return A \code{vector} giving the optimized beta values
-#' @author Charles Benfer
+#' @param Data a \code{matrix} of data that we want to do a logistic regression on.
+#' @param Y A \code{integer} representing the column of the data that you want to be the response variable
+#' @param X A \code{vector} representing the column(s) of the data that you want to be the predictor variable(s).
+#' @return  A \code{vector} giving the optimized beta values
+#' @author Group 11
 #' @import stats
 #' @import MASS
 #' @export

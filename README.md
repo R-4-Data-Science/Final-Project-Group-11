@@ -26,8 +26,18 @@ needs to be installed first)
 devtools::install_github("R-4-Data-Science/Final-Project-Group-11")
 ```
 
-    ## Skipping install of 'log.reg.11' from a github remote, the SHA1 (72243232) has not changed since last install.
-    ##   Use `force = TRUE` to force installation
+    ## Downloading GitHub repo R-4-Data-Science/Final-Project-Group-11@HEAD
+
+    ## ── R CMD build ─────────────────────────────────────────────────────────────────
+    ##      checking for file ‘/private/var/folders/cn/2r3_sfbd46v9gt3vlvvwbm_m0000gn/T/RtmprcY78P/remotes47e37580b8ba/R-4-Data-Science-Final-Project-Group-11-6c36b7d/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/cn/2r3_sfbd46v9gt3vlvvwbm_m0000gn/T/RtmprcY78P/remotes47e37580b8ba/R-4-Data-Science-Final-Project-Group-11-6c36b7d/DESCRIPTION’
+    ##   ─  preparing ‘log.reg.11’:
+    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+    ##   ─  checking for LF line-endings in source and make files and shell scripts
+    ##   ─  checking for empty or unneeded directories
+    ##    Omitted ‘LazyData’ from DESCRIPTION
+    ## ─  building ‘log.reg.11_0.1.0.tar.gz’
+    ##      
+    ## 
 
 ``` r
 library(log.reg.11)
@@ -90,10 +100,10 @@ print(results)
 ```
 
     ##            Actual         Lower        Upper
-    ## [1,] -3.440677328 -6.6102879518 -0.271066704
-    ## [2,]  0.002289743 -0.0009799244  0.005559411
-    ## [3,]  0.774910748  0.1038916379  1.445929857
-    ## [4,] -0.559607591 -0.9734400454 -0.145775136
+    ## [1,] -3.440677328 -6.391612e+00 -0.489743013
+    ## [2,]  0.002289743 -7.992793e-05  0.004659414
+    ## [3,]  0.774910748 -4.472480e-02  1.594546293
+    ## [4,] -0.559607591 -8.517475e-01 -0.267467664
 
 ### 3. Plot of the fitted logistic curve to the responses: `logistic_plot`
 
@@ -165,3 +175,6 @@ plot_confusion_matrix(Data = test_data, y = test_resp,X = test_pred , value_name
 ```
 
     ## false_discovery do not exist.
+
+Framework reference link for this
+introduction:<https://chat.openai.com/share/d590f325-5ab6-4642-98d4-127034991dbb>

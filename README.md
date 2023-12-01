@@ -29,7 +29,7 @@ devtools::install_github("R-4-Data-Science/Final-Project-Group-11")
     ## Downloading GitHub repo R-4-Data-Science/Final-Project-Group-11@HEAD
 
     ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/cn/2r3_sfbd46v9gt3vlvvwbm_m0000gn/T/RtmprcY78P/remotes47e37580b8ba/R-4-Data-Science-Final-Project-Group-11-6c36b7d/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/cn/2r3_sfbd46v9gt3vlvvwbm_m0000gn/T/RtmprcY78P/remotes47e37580b8ba/R-4-Data-Science-Final-Project-Group-11-6c36b7d/DESCRIPTION’
+    ##      checking for file ‘/private/var/folders/cn/2r3_sfbd46v9gt3vlvvwbm_m0000gn/T/RtmpZZ1wmM/remotes48c21f1ede9e/R-4-Data-Science-Final-Project-Group-11-14107cc/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/cn/2r3_sfbd46v9gt3vlvvwbm_m0000gn/T/RtmpZZ1wmM/remotes48c21f1ede9e/R-4-Data-Science-Final-Project-Group-11-14107cc/DESCRIPTION’
     ##   ─  preparing ‘log.reg.11’:
     ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
     ##   ─  checking for LF line-endings in source and make files and shell scripts
@@ -100,10 +100,10 @@ print(results)
 ```
 
     ##            Actual         Lower        Upper
-    ## [1,] -3.440677328 -6.391612e+00 -0.489743013
-    ## [2,]  0.002289743 -7.992793e-05  0.004659414
-    ## [3,]  0.774910748 -4.472480e-02  1.594546293
-    ## [4,] -0.559607591 -8.517475e-01 -0.267467664
+    ## [1,] -3.440677328 -6.0743476505 -0.807007006
+    ## [2,]  0.002289743  0.0003748054  0.004204681
+    ## [3,]  0.774910748  0.0078758314  1.541945664
+    ## [4,] -0.559607591 -0.8379318766 -0.281283305
 
 ### 3. Plot of the fitted logistic curve to the responses: `logistic_plot`
 
@@ -175,6 +175,11 @@ plot_confusion_matrix(Data = test_data, y = test_resp,X = test_pred , value_name
 ```
 
     ## false_discovery do not exist.
+
+### 6. For the bonus part
+
+Our package created a shiny app that allows the used to view each of the
+plots by making a selection from a dropdown menu.
 
 Framework reference link for this
 introduction:<https://chat.openai.com/share/d590f325-5ab6-4642-98d4-127034991dbb>

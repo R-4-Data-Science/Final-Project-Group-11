@@ -72,4 +72,8 @@ plot_confusion_matrix(Data = test_data, y = test_resp,X = test_pred , value_name
 plot_confusion_matrix(Data = test_data, y = test_resp,X = test_pred , value_name = 'false_discovery')
 ```
 
+### 6. For the bonus part
+Our package created a shiny app that allows the used to view each of the plots by making a selection from a dropdown menu.
+
+
 Framework reference link for this introduction:https://chat.openai.com/share/d590f325-5ab6-4642-98d4-127034991dbb

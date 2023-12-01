@@ -26,18 +26,8 @@ needs to be installed first)
 devtools::install_github("R-4-Data-Science/Final-Project-Group-11")
 ```
 
-    ## Downloading GitHub repo R-4-Data-Science/Final-Project-Group-11@HEAD
-
-    ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/cn/2r3_sfbd46v9gt3vlvvwbm_m0000gn/T/RtmpZZ1wmM/remotes48c21f1ede9e/R-4-Data-Science-Final-Project-Group-11-14107cc/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/cn/2r3_sfbd46v9gt3vlvvwbm_m0000gn/T/RtmpZZ1wmM/remotes48c21f1ede9e/R-4-Data-Science-Final-Project-Group-11-14107cc/DESCRIPTION’
-    ##   ─  preparing ‘log.reg.11’:
-    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-    ##   ─  checking for LF line-endings in source and make files and shell scripts
-    ##   ─  checking for empty or unneeded directories
-    ##    Omitted ‘LazyData’ from DESCRIPTION
-    ## ─  building ‘log.reg.11_0.1.0.tar.gz’
-    ##      
-    ## 
+    ## Skipping install of 'log.reg.11' from a github remote, the SHA1 (8abb82b1) has not changed since last install.
+    ##   Use `force = TRUE` to force installation
 
 ``` r
 library(log.reg.11)
@@ -100,10 +90,10 @@ print(results)
 ```
 
     ##            Actual         Lower        Upper
-    ## [1,] -3.440677328 -6.0743476505 -0.807007006
-    ## [2,]  0.002289743  0.0003748054  0.004204681
-    ## [3,]  0.774910748  0.0078758314  1.541945664
-    ## [4,] -0.559607591 -0.8379318766 -0.281283305
+    ## [1,] -3.440677328 -7.1930665424  0.311711886
+    ## [2,]  0.002289743 -0.0009014579  0.005480944
+    ## [3,]  0.774910748 -0.1427097565  1.692531252
+    ## [4,] -0.559607591 -0.8808601969 -0.238354984
 
 ### 3. Plot of the fitted logistic curve to the responses: `logistic_plot`
 

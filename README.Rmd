@@ -10,22 +10,17 @@ This is an R package for performing logistic regression, implemented through num
 
 ### Install the package
 
-First, users can download the latest package through github through the following code 'devtools::install_github("R-4-Data-Science/Final-Project-Group-11")'.(If the user does not have the ‘devtools’ package installed, this package needs to be installed first. The MASS package also needs to be installed and loaded.)
+First, users can download the latest package through github through the following code 'devtools::install_github("R-4-Data-Science/Final-Project-Group-11")'.(If the user does not have the ‘devtools’ package installed, this package needs to be installed first)
 
 ```{r install the package, include=TRUE}
 devtools::install_github("R-4-Data-Science/Final-Project-Group-11")
 library(log.reg.11)
-library(MASS)
 ```
-Next, we will use the 'bank' data set from the canvas page to display the functions in our package. For this example, let's complete a logistic regression for Defaulting based on age and balance. We will have to change the `default` column so that a 0 means the person did not default, and a 1 means the person did default
+Next, we will borrow a set of data to show how the main functions in our package have been output and displayed.
 ```{r import example data set, include=TRUE}
-  bank <- read.csv("C:/Users/charl/Downloads/bank.csv", sep=";")
+ #data obtained from https://stats.oarc.ucla.edu/r/dae/logit-regression/
+test_data <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
 
-for(i in 1:nrow(bank)){
-  if(bank[i,5] == 'no'){bank[i,5] <- 0}
-  else bank[i,5] <- 1
-}
-bank[,5] <- as.integer(bank[,5])
 ```
 
 ### 1. Finding the Betas: `log_betas`
@@ -35,16 +30,16 @@ The user will be shown a list in the output, where the first part `par` is the b
 Y representing the column of the data that you want to be the response variable and X representing the column(s) of the data that you want to be the predictor variable(s).
 ```{r the example for the function log_betas, include=TRUE}
 
-test_resp <- 5
-test_pred <- c(1,6)
-log_betas(Data = bank, Y = test_resp, X = test_pred)
+test_resp <- 1
+test_pred <- 2:4
+log_betas(Data = test_data, Y = test_resp, X = test_pred)
 ```
 
 ### 2. Bootstrap Logistic Regression Confidence Intervals: `bootstrap_logistic_confidence`
 This function will help the user calculate bootstrap confidence intervals for the coefficients estimated by a logistic regression model.
 Next we will continue to use the data just now to show the confidence interval calculated by our function.
 ```{r the example for the function bootstrap_logistic_confidence, include=TRUE}
-results <- suppressWarnings(bootstrap_logistic_confidence(bank, test_resp, test_pred))
+results <- suppressWarnings(bootstrap_logistic_confidence(test_data, test_resp, test_pred))
 print(results)
 
 ```
@@ -54,7 +49,7 @@ This function will help the user Plot of the fitted logistic curve to the respon
 The example:
 ```{r the example for the function logistic_plot,include=TRUE}
 
-logistic_plot(bank, Resp = 5, Pred= 6)
+logistic_plot(test_data, Resp = 1, Pred= 3)
 
 ```
 
@@ -63,7 +58,7 @@ This function help user create the confusion matrix and also output the followin
 This function will output a list including the values of the above indicators, in the part of the corresponding name.
 The example:
 ```{r the example for the function confusion_matrix}
-result <- confusion_matrix(Data = bank, X=test_pred, y=test_resp, cut_off = 0.5)
+result <- confusion_matrix(Data = test_data, X=test_pred, y=test_resp, cut_off = 0.5)
 print(result)
 
 ```
@@ -72,9 +67,9 @@ print(result)
 The possibility for the user to plot of any of the above metrics evaluated over a grid of cut-off values for prediction going from 0.1 to 0.9 with steps of 0.1.
 Parameter `value_name` requires the user to specify among 6 indicators(`prevalence`, `accuracy`, `sensitivity`, `specificity`, `false_discovery_rate`, `diagnostic_odds_ratio`). If the input is incorrect, the user will be prompted in the output that "the indicator does not exist". If the user does not select an indicator, a plot of prevalence versus different cut_off values is output.
 ```{r the example for the function plot_confusion_matrix, include=TRUE}
-plot_confusion_matrix(Data = bank, y = test_resp,X = test_pred , value_name = 'false_discovery_rate')
+plot_confusion_matrix(Data = test_data, y = test_resp,X = test_pred , value_name = 'false_discovery_rate')
 # The example for not exist.
-plot_confusion_matrix(Data = bank, y = test_resp,X = test_pred , value_name = 'false_discovery')
+plot_confusion_matrix(Data = test_data, y = test_resp,X = test_pred , value_name = 'false_discovery')
 ```
 
 ### 6. For the bonus part

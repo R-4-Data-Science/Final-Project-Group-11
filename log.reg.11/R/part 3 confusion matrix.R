@@ -22,11 +22,6 @@ confusion_matrix <- function(Data, X, y, cut_off = 0.5) {
 
   #calculate the beta values
   Data <- cbind(as.matrix(Data[,y]),rep(1, nrow(Data)), as.matrix(Data[,X]))
-  if(length(X)>1){
-    X <- 3:(length(X)+2)
-  }
-  else{X = 3}
-  Y <- 1
 
   beta <- log_betas(Data = Data, X = X, Y = y)$par
 

@@ -13,7 +13,7 @@ This is an R package for performing logistic regression, implemented through num
 First, users can download the latest package through github through the following code 'devtools::install_github("R-4-Data-Science/Final-Project-Group-11")'.(If the user does not have the ‘devtools’ package installed, this package needs to be installed first. The user also needs the MASS package.)
 
 ```{r install the package, include=TRUE}
-devtools::install_github("R-4-Data-Science/Final-Project-Group-11", force = T)
+devtools::install_github("R-4-Data-Science/Final-Project-Group-11")
 library(log.reg.11)
 library(MASS)
 ```

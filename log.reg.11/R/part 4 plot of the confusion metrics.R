@@ -45,6 +45,3 @@ plot_confusion_matrix <- function(Data, y, X, value_name = "prevalence"){
       cat(value_name, "do not exist.\n")
     }
 }
-
-
-# Reference：https://chat.openai.com/share/d17d0b56-4d16-4200-8ab9-668d61c9ac1b

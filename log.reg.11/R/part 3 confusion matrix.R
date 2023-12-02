@@ -16,8 +16,6 @@
 #' # Call your confusion_matrix function
 #' result <- confusion_matrix(Data = test_data, X=test_pred, y=test_resp, cut_off = 0.5)
 #' print(result)
-
-
 confusion_matrix <- function(Data, X, y, cut_off = 0.5) {
 
   #calculate the beta values

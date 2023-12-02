@@ -20,7 +20,7 @@ First, users can download the latest package through github through the
 following code
 ‘devtools::install_github(“R-4-Data-Science/Final-Project-Group-11”)’.(If
 the user does not have the ‘devtools’ package installed, this package
-needs to be installed first)
+needs to be installed first. The user also needs the MASS package.)
 
 ``` r
 devtools::install_github("R-4-Data-Science/Final-Project-Group-11")
@@ -29,26 +29,37 @@ devtools::install_github("R-4-Data-Science/Final-Project-Group-11")
     ## Downloading GitHub repo R-4-Data-Science/Final-Project-Group-11@HEAD
 
     ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/cn/2r3_sfbd46v9gt3vlvvwbm_m0000gn/T/RtmpZZ1wmM/remotes48c21f1ede9e/R-4-Data-Science-Final-Project-Group-11-14107cc/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/cn/2r3_sfbd46v9gt3vlvvwbm_m0000gn/T/RtmpZZ1wmM/remotes48c21f1ede9e/R-4-Data-Science-Final-Project-Group-11-14107cc/DESCRIPTION’
-    ##   ─  preparing ‘log.reg.11’:
-    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-    ##   ─  checking for LF line-endings in source and make files and shell scripts
+    ##       ✔  checking for file 'C:\Users\charl\AppData\Local\Temp\RtmpUV3B0B\remotes737420487bd4\R-4-Data-Science-Final-Project-Group-11-b7bbf63/DESCRIPTION' (433ms)
+    ##       ─  preparing 'log.reg.11': (1.4s)
+    ##    checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+    ##       ─  checking for LF line-endings in source and make files and shell scripts
     ##   ─  checking for empty or unneeded directories
-    ##    Omitted ‘LazyData’ from DESCRIPTION
-    ## ─  building ‘log.reg.11_0.1.0.tar.gz’
+    ##      Omitted 'LazyData' from DESCRIPTION
+    ##       ─  building 'log.reg.11_0.1.0.tar.gz'
     ##      
     ## 
 
+    ## Installing package into 'C:/Users/charl/AppData/Local/R/win-library/4.3'
+    ## (as 'lib' is unspecified)
+
 ``` r
 library(log.reg.11)
+library(MASS)
 ```
 
-Next, we will borrow a set of data to show how the main functions in our
-package have been output and displayed.
+Next, we use the `bank` data set from the Canvas page to demonstrate our
+functions. We will focus on regressing on whether the person defaulted
+or not based on age and balance, so we have to modify our data a little
+to fit those needs.
 
 ``` r
- #data obtained from https://stats.oarc.ucla.edu/r/dae/logit-regression/
-test_data <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
+test_data <- read.csv('bank.csv', sep = ';')
+for(i in 1:nrow(test_data)){
+  
+  if(test_data[i,5]=='no'){test_data[i,5] <- 0}
+  else{test_data[i,5] <- 1}
+}
+test_data[,5] <- as.integer(test_data[,5])
 ```
 
 ### 1. Finding the Betas: `log_betas`
@@ -62,24 +73,23 @@ variable and X representing the column(s) of the data that you want to
 be the predictor variable(s).
 
 ``` r
-test_resp <- 1
-test_pred <- 2:4
+test_resp <- 5
+test_pred <- c(1,6)
 log_betas(Data = test_data, Y = test_resp, X = test_pred)
 ```
 
     ## $par
-    ##              [,1]
-    ## [1,] -3.440677328
-    ## [2,]  0.002289743
-    ## [3,]  0.774910748
-    ## [4,] -0.559607591
+    ##             [,1]
+    ## [1,]  0.03105936
+    ## [2,] -0.09179430
+    ## [3,] -0.00277739
     ## 
     ## $value
-    ## [1] 229.7209
+    ## [1] 327.0473
     ## 
     ## $counts
     ## function gradient 
-    ##      473       NA 
+    ##      164       NA 
     ## 
     ## $convergence
     ## [1] 0
@@ -99,11 +109,10 @@ results <- suppressWarnings(bootstrap_logistic_confidence(test_data, test_resp, 
 print(results)
 ```
 
-    ##            Actual         Lower        Upper
-    ## [1,] -3.440677328 -6.0743476505 -0.807007006
-    ## [2,]  0.002289743  0.0003748054  0.004204681
-    ## [3,]  0.774910748  0.0078758314  1.541945664
-    ## [4,] -0.559607591 -0.8379318766 -0.281283305
+    ##           Actual        Lower        Upper
+    ## [1,]  0.03105936 -2.352886526  2.415005256
+    ## [2,] -0.09179430 -0.154897343 -0.028691250
+    ## [3,] -0.00277739 -0.003289283 -0.002265498
 
 ### 3. Plot of the fitted logistic curve to the responses: `logistic_plot`
 
@@ -111,7 +120,7 @@ This function will help the user Plot of the fitted logistic curve to
 the responses estimated by the logistic regression model. The example:
 
 ``` r
-logistic_plot(test_data, Resp = 1, Pred= 3)
+logistic_plot(test_data, Resp = 5, Pred= 6)
 ```
 
 ![](README_files/figure-gfm/the%20example%20for%20the%20function%20logistic_plot-1.png)<!-- -->
@@ -131,26 +140,26 @@ print(result)
 
     ## $confuse_matrix
     ##                 Predicted Positive Predicted Negative
-    ## Actual Positive                263                118
-    ## Actual Negative                 10                  9
+    ## Actual Positive               4441                 73
+    ## Actual Negative                  4                  3
     ## 
     ## $prevalence
-    ## [1] 0.3175
+    ## [1] 0.01681044
     ## 
     ## $accuracy
-    ## [1] 0.68
+    ## [1] 0.9829684
     ## 
     ## $sensitivity
-    ## [1] 0.07086614
+    ## [1] 0.03947368
     ## 
     ## $specificity
-    ## [1] 0.96337
+    ## [1] 0.9991001
     ## 
     ## $false_discovery_rate
-    ## [1] 0.5263158
+    ## [1] 0.5714286
     ## 
     ## $diagnostic_odds_ratio
-    ## [1] 2.005932
+    ## [1] 45.62671
 
 ### 5. Plot different cut_off value versus indicators: `plot_confusion_matrix`
 

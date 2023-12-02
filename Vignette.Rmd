@@ -4,6 +4,8 @@ author: "Group 11: Charles Benfer, Ernest Asante, Rongjing Xia"
 date: "11-30-2023"
 output: html_document
 ---
+### Github Link 
+The link to our github repository can be found [here]{https://github.com/R-4-Data-Science/Final-Project-Group-11.git}
 
 ### Introduction
 This is an R package for performing logistic regression, implemented through numerical optimization. This package contains the basic functions needed to perform logistic regression, including estimating a vector of coefficients `β` containing independent/predictor variables and intercepts, confidence intervals for `β`, a fitted logistic curve plot of the response, and the resulting "confusion matrix" and plotting each cut_off Plot of different indicator values corresponding to the values. Also includes help documentation for all functions.

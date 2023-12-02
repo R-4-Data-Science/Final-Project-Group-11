@@ -19,10 +19,8 @@ log_betas <- function(Data, Y, X){
 
 
   Data <- cbind(as.matrix(Data[,Y]),rep(1, nrow(Data)), as.matrix(Data[,X]))
-  if(length(X)>1){
-  X <- X+1
-  }
-  else{X = 3}
+  X <- 2:(2+length(X))
+  Y <- 1
   start_betas <- ginv(t(as.matrix(Data[,c(2,X)]))%*%as.matrix(Data[,c(2,X)]))%*%t(as.matrix(Data[,c(2,X)]))%*%as.matrix(Data[,Y])
   optim(start_betas, log_loss, Obs = Data, Resp=Y, Preds=X)
 

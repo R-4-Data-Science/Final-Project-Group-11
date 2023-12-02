@@ -360,7 +360,7 @@ Xia</h4>
 
 <div id="github-link" class="section level3">
 <h3>Github Link</h3>
-<p>The link to our github repository can be found [here]{<a href="https://github.com/R-4-Data-Science/Final-Project-Group-11.git" class="uri">https://github.com/R-4-Data-Science/Final-Project-Group-11.git</a>}</p>
+<p>The link to our github repository can be found <a href="https://github.com/R-4-Data-Science/Final-Project-Group-11.git">here</a></p>
 </div>
 <div id="introduction" class="section level3">
 <h3>Introduction</h3>
@@ -382,8 +382,44 @@ the following code
 the user does not have the ‘devtools’ package installed, this package
 needs to be installed first. The user also needs the MASS package.)</p>
 <pre class="r"><code>devtools::install_github(&quot;R-4-Data-Science/Final-Project-Group-11&quot;)</code></pre>
-<pre><code>## Skipping install of &#39;log.reg.11&#39; from a github remote, the SHA1 (b7bbf63c) has not changed since last install.
-##   Use `force = TRUE` to force installation</code></pre>
+<pre><code>## Downloading GitHub repo R-4-Data-Science/Final-Project-Group-11@HEAD</code></pre>
+<pre><code>## ── R CMD build ─────────────────────────────────────────────────────────────────
+##   
+  
+  
+   checking for file &#39;C:\Users\charl\AppData\Local\Temp\Rtmp6f1SZZ\remotes323463e6cb6\R-4-Data-Science-Final-Project-Group-11-c7a00ea/DESCRIPTION&#39; ...
+  
+✔  checking for file &#39;C:\Users\charl\AppData\Local\Temp\Rtmp6f1SZZ\remotes323463e6cb6\R-4-Data-Science-Final-Project-Group-11-c7a00ea/DESCRIPTION&#39; (445ms)
+## 
+  
+  
+  
+─  preparing &#39;log.reg.11&#39;: (1.5s)
+##    checking DESCRIPTION meta-information ...
+  
+✔  checking DESCRIPTION meta-information
+## 
+  
+  
+  
+─  checking for LF line-endings in source and make files and shell scripts
+## 
+  
+─  checking for empty or unneeded directories
+## 
+  
+   Omitted &#39;LazyData&#39; from DESCRIPTION
+## 
+  
+  
+  
+─  building &#39;log.reg.11_0.1.0.tar.gz&#39;
+## 
+  
+   
+## </code></pre>
+<pre><code>## Installing package into &#39;C:/Users/charl/AppData/Local/R/win-library/4.3&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre class="r"><code>library(log.reg.11)
 library(MASS)</code></pre>
 <p>Next, we use the <code>bank</code> data set from the Canvas page to
@@ -438,10 +474,10 @@ Next we will continue to use the data just now to show the confidence
 interval calculated by our function.</p>
 <pre class="r"><code>results &lt;- suppressWarnings(bootstrap_logistic_confidence(test_data, test_resp, test_pred))
 print(results)</code></pre>
-<pre><code>##           Actual        Lower        Upper
-## [1,]  0.03105936 -2.420128989  2.482247718
-## [2,] -0.09179430 -0.157799390 -0.025789203
-## [3,] -0.00277739 -0.003391125 -0.002163656</code></pre>
+<pre><code>##           Actual       Lower        Upper
+## [1,]  0.03105936 -2.42266224  2.484780972
+## [2,] -0.09179430 -0.15465828 -0.028930316
+## [3,] -0.00277739 -0.00330985 -0.002244931</code></pre>
 </div>
 <div id="plot-of-the-fitted-logistic-curve-to-the-responses-logistic_plot" class="section level3">
 <h3>3. Plot of the fitted logistic curve to the responses:
